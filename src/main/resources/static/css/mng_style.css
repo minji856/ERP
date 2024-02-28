@@ -1,0 +1,133 @@
+body {
+    font-family: 'Arial', sans-serif; 
+    background-color: #ffffff; 
+}
+
+.main{
+	padding-left: 250px;
+}
+
+h1 {
+    color: #333; 
+}
+
+.container {
+    max-width: 1200px; /* ERP 사이트 디자인에 따라 최대 너비를 조정 */
+    margin: 2rem auto; /* 가운데 정렬 및 상하 여백 추가 */
+}
+
+.paging {
+    position: absolute;
+    margin-top: 100px; 
+    left: 50%;
+    transform: translateX(-50%); 
+    padding: 10px;
+    text-align: center;
+}
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+th, td {
+	padding: 0.5rem;
+    border: 1px solid #ddd;
+}
+
+th{
+	background-color: #f0f0f0;
+}
+
+.member {
+    border: 1px solid;
+}
+.member:hover {
+    transition: all 0.3s;
+    background: #DED369;
+}
+#search {
+    border: 1px solid lightgray;
+}
+.container {
+    display: flex;
+    justify-content: center;
+}
+.memberCenter {
+    text-align: center;
+}
+.pagination {
+    margin-top: 10px;
+}
+.pagination a {
+    padding: 8px;
+    margin: 0 4px;
+    background-color: #f1f1f1;
+    border: 1px solid #ddd;
+}
+.pagination a.active {
+    background-color: #333;
+    color: white;
+}
+h1, p {
+    text-align: center; 
+}
+.search {
+    text-align: center; 
+    margin-bottom: 1rem;
+}
+
+.paging li {
+    display: inline-block;
+}
+
+.paging li a {
+    display: block; 
+    width: 40px;
+    line-height: 40px;
+    border-radius: 10px;
+    margin: 3px;
+    margin-top: 20px;
+    box-shadow: 0 5px 10px #f1f1f1;
+}
+
+.paging .active {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+}
+
+
+input[type="submit"] {
+  display: inline-block;
+  border: none;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  background: linear-gradient(to bottom, #c4c361, #cdac36);
+  position: relative;
+  overflow: hidden;
+}
+
+input[type="submit"]::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.2), transparent);
+  transform: translateY(-100%);
+  transition: transform 0.3s ease;
+}
+
+input[type="submit"]::before {
+  transform: translateY(0);
+}
+  
+input[type="submit"]:hover {
+  background: linear-gradient(to bottom, #cdac36, #c4c361);
+}
+

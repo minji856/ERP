@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>글 내용</title>
+
+    <!-- 부트스트랩 CSS 추가 -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link th:href="@{/vendor/fontawesome-free/css/all.min.css}" rel="stylesheet">
+    <!-- Roboto 폰트 추가 -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="/css/layout/nav.css" rel="stylesheet">
+
+	<link th:href="@{/css/board_style.css}" rel="stylesheet" />
+</head>
+<body>
+<div th:replace="nav :: nav"></div>
+<div class="container" >
+    <div class="card">
+        <div class="card-header">
+			<h1><a href="/freeboard">자유게시판</a></h1>
+		</div>
+        <div class="card-view">
+            <div class="title">
+                <h2 th:text="${post.title}" class="mb-4"></h2>
+            </div>
+            <div class="myinfo">
+                <dl>
+                    <dt>작성자</dt>
+                    <dd th:text="${post.author}"></dd>
+                </dl>
+                <dl>
+                    <dt>조회수</dt>
+                    <dd th:text="${post.view}"></dd>
+                </dl>
+                <dl>
+                    <dt>작성일</dt>
+                    <dd th:text="${post.created_date}"></dd>
+                </dl>
+            </div>
+        	<div class="cont"/>
+            	<span th:text="${post.content}"></span>
+       		</div>	
+       		<div class="btn-view">
+	            <a th:href="@{/freeboard/update/{id}(id=${post.id})}">글 수정하기</a>
+        	</div>
+        	<div class="btn-view2">
+	            <a th:href="@{/freeboard}">목록으로</a>
+        	</div>
+    	</div>	
+    </div>
+    <div class="card">
+	    <div class="comment-form">
+	            <form method="post" action="/api/add-comment">
+	                <div class="form-group">
+	                    <input type="hidden" name="writer" th:value="${ename}" readonly class="form-control">
+	                </div>
+	                <div class="form-group">
+	                    <label>댓글 내용</label>
+	                    <textarea rows="5" cols="50" name="content" class="form-control"></textarea>
+	                </div>
+	                <div class="form-group">
+	                    <input type="hidden" th:name="postId" th:value="${post.id}">
+	                    <button type="submit" class="btn btn-primary">댓글 작성</button>
+	                </div>
+	            </form>
+	        </div>
+	
+	        <hr>
+	
+	        <div class="comment-list">
+	            <h3>댓글 목록</h3>
+	            <table class="table table-bordered">
+	                <thead class="thead-custom">
+	                    <tr>
+	                        <th scope="col">작성자</th>
+	                        <th scope="col">내용</th>
+	                        <th scope="col">작성일</th>
+	                    </tr>
+	                </thead>
+	                <tbody>
+	                    <tr th:each="comment : ${comments}">
+	                        <td th:text="${comment.comment_writer}"></td>
+	                        <td th:text="${comment.comment_contents}"></td>
+	                        <td th:text="${comment.createdDate}"></td>
+	                    </tr>
+	                    <tr th:if="${#lists.isEmpty(comments)}">
+	                        <td colspan="3" class="text-center">댓글이 없습니다.</td>
+	                    </tr>
+	                </tbody>
+	            </table>
+	        </div>
+      	</div>
+</div>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

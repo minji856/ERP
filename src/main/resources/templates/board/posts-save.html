@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>게시글 등록</title>
+    <!-- 부트스트랩 CSS 추가 -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/layout/nav.css" rel="stylesheet">
+	<link th:href="@{/css/board_style.css}" rel="stylesheet">
+	<script src = "https://code.jquery.com/jquery-3.3.1.min.js"></script> 
+</head>
+<body>
+	<div th:replace="nav :: nav"></div>
+	<div class="card">
+	    <form>
+			<div class="card-write">
+		        <div class="title-w">
+		            <label for="title">제목</label>
+		            <input type="text" class="form-control" id="title" placeholder="제목을 입력하세요">
+		        </div>
+		        <div class="myinfo">
+		            <label for="author">작성자</label>
+		            <input type="text" class="form-control" id="author" th:value="${session.author}" readonly>
+		        </div>
+		        <div class="msg">
+		            <label for="content">내용</label>
+		            <textarea class="form-control" id="content" placeholder="내용을 입력하세요"></textarea>
+		        </div>
+			</div>
+	    </form>
+		
+	    <a th:href="@{/freeboard}" role="button" class="btn-x">취소</a>
+	    <button type="button" class="btn-w" id="btn-save">등록</button>
+	</div>
+<script src="/js/app/index.js"></script>
+</body>
+</html>

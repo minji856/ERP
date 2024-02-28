@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Hi-E 마이페이지</title>
+    <link href="/css/layout/nav.css" rel="stylesheet">
+    <link href="/css/modal/modal.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa; /* 페이지 배경색 */
+        }
+
+        .container {
+            background-color: #ffffff; /* 컨테이너 배경색 */
+            border-radius: 10px; /* 컨테이너 테두리 둥글게 */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+            padding: 20px; /* 컨테이너 안 여백 */
+            padding-left: 250px;
+        }
+
+        .card {
+            margin-bottom: 20px;
+        }
+
+        .profile-image {
+            border-radius: 50%; /* 프로필 이미지를 원형으로 */
+            width : 120px;
+            height : 120px;
+        }
+
+        .btn-action {
+            margin-right: 10px;
+        }
+
+        hr {
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+    </style>
+    <script>
+        function openChangePasswordPopup() {
+            window.open('/view/change-password', '_blank', 'width=800,height=600');
+        }
+        function openChangeProfilePopup() {
+            window.open('/view/change-profile', '_blank', 'width=800,height=600');
+        }
+    </script>
+</head>
+
+<body>
+    <div th:replace="nav :: nav"></div>
+    <div class="container mt-5" >
+        <!-- 기본 정보 -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5>기본 정보</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p><strong>이름:</strong> [[${member.ename}]]</p>
+                        <p><strong>부서:</strong> [부서 정보]</p>
+                        <p><strong>권한:</strong> [[${member.roles}]]</p>
+                    </div>
+                    <div class="col-md-6">
+                        <!-- 프로필 이미지 -->
+					     <img class="img-fluid px-3 px-sm-4 mt-3 mb-4 profile-image"
+						     th:src="@{${member.filepath == null ? member.picture : '/upload/' + member.picture}}"
+						     alt="프로필 이미지">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 업무 내용 -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5>업무 내용</h5>
+            </div>
+            <div class="card-body">
+                <!-- 업무 내용 표시 -->
+                <p>진행중인 업무가 없습니다.</p>
+            </div>
+        </div>
+
+        <!-- 작성한 글 -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5>작성한 글📝</h5>
+            </div>
+            <div class="card-body">
+                <!-- 글 목록을 동적으로 표시 -->
+                <div th:if="${not #lists.isEmpty(mypost)}">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>게시판</th>
+                                <th>제목</th>
+                                <th>조회수</th>
+                                <th>작성일자</th>
+                                <th>이동하기</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="post : ${mypost}">
+                                <td>자유게시판</td>
+                                <td th:text="${post.title}"></td>
+                                <td th:text="${post.view}"></td>
+                                <td th:text="${post.createdDate}"></td>
+                                <td><a th:href="@{'/freeboard/show/' + ${post.id}}">이동하기</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p th:if="${#lists.isEmpty(mypost)}">작성한 글이 없습니다.</p>
+            </div>
+        </div>
+
+        <!-- 로그아웃 버튼 -->
+        <div class="d-flex justify-content-center" style="max-width: 100%;">
+            <a href="/view/remove" class="btn btn-sm btn-warning" style="margin-right: 350px;">회원탈퇴</a><br>
+		    <a href="#" class="btn btn-sm btn-danger btn-action" data-toggle="modal" data-target="#logoutModal" style="margin-right: 350px;">로그아웃</a>
+        </div>
+        <hr/>
+        <!-- 무지성으로 버튼 만든 부분 -->
+        나중에 삭제할 부분
+        <div>
+            <button class="action-button btn btn-primary btn-action" onclick="openChangePasswordPopup()">비번 변경</button>
+            <button class="action-button btn btn-primary btn-action" onclick="openChangeProfilePopup()">프로필 이미지 변경</button>
+        </div>
+    </div>
+    
+    <!-- 로그아웃 모달 -->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="logoutModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="logoutModalLabel">로그아웃 확인</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    정말로 로그아웃하시겠습니까?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+                    <a href="/logout" class="btn btn-danger">로그아웃</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="/js/modal/modal.js"></script>>
+
+</body>
+
+</html>

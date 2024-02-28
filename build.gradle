@@ -1,0 +1,105 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.0.2'
+	id 'io.spring.dependency-management' version '1.1.0'
+}
+
+
+group = 'com.hi_e'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '17'
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	/* 스프링 */
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	// Security
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
+	testImplementation 'org.springframework.security:spring-security-test'
+	// OAuth
+	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+	implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
+	// Mail
+	implementation 'org.springframework.boot:spring-boot-starter-mail'
+	/* 템플릿 엔진*/
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	implementation 'org.springframework.boot:spring-boot-starter-mustache'
+	/* Lombok */
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	/* db */
+	runtimeOnly 'com.h2database:h2'
+	// 스프링 부트 버전에 맞춰 자동으로 JPA 관련 라이브러리들의 버전 관리
+    implementation 'org.springframework.session:spring-session-jdbc'
+    /* JWT */
+	implementation 'io.jsonwebtoken:jjwt-api:0.11.2'
+	implementation 'io.jsonwebtoken:jjwt-impl:0.11.2'
+	implementation 'io.jsonwebtoken:jjwt-jackson:0.11.2'
+	/* 파일 업로드 */
+	implementation('commons-io:commons-io:2.11.0')
+}
+
+/* 통합 build 시 필요한 설정 ( React와 Spring 동시 build ) */
+def ReactDir = "$projectDir/src/main/frontend/vacation";
+
+sourceSets{
+	main{
+		resources{
+			srcDirs = ["$projectDir/src/main/resources"]
+		}
+	}
+}
+
+processResources{
+	dependsOn "copyReactFile"
+}
+
+task installReact(type:Exec){
+	workingDir "$ReactDir"
+	inputs.dir "$ReactDir"
+	group = BasePlugin.BUILD_GROUP
+	
+	if(System.getProperty('os.name').toLowerCase(Locale.ROOT).contains('windows')){
+		commandLine "npm.cmd", "audit", "fix"
+		commandLine 'npm.cmd', 'install'
+	}else{
+		commandLine "npm", "audit", "fix"
+		commandLine 'npm', 'install'
+	}
+}
+
+task buildReact(type:Exec){
+	dependsOn "installReact"
+	workingDir "$ReactDir"
+	inputs.dir "$ReactDir"
+	group = BasePlugin.BUILD_GROUP
+	
+	if(System.getProperty('os.name').toLowerCase(Locale.ROOT).contains('windows')){
+		commandLine "npm.cmd", "run-script", "build"
+	}else{
+		commandLine "npm", "run-script", "build"
+	}
+}
+
+task copyReactFile(type:Copy){
+	dependsOn "buildReact"
+	from "$ReactDir/build"
+	into "$projectDir/src/main/resources/static"
+}
