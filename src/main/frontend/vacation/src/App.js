@@ -6,7 +6,7 @@ import Vacation from 'pages/Vacation';
 
 const App = () => {
   // useEffect(()=>{
-  //   axios.get('http://localhost:8484/api/event')
+  //   axios.get('http://localhost:8484/api/react')
   //   .then(response => setMessage(response.data))
   // })
   

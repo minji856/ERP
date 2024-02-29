@@ -42,7 +42,6 @@ const Attendance = () => {
                                     <button onClick={handleClockOut}>퇴근하기</button>
                                 </div>
                             </header>
-                            {/* 나머지 컴포넌트 및 내용을 추가하세요. */}
                         </div>
                     </div>
                 </div>
