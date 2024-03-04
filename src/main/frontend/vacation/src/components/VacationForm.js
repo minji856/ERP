@@ -42,7 +42,7 @@ const VacationForm = () => {
   const submitHandler = (event) => {
     event.preventDefault();
     const formData = new FormData();
-    alert(JSON.stringify(formData, null, 2));
+    // alert(JSON.stringify(formData, null, 2));
     
     formData.append("vacationType", vacationType);
     formData.append("holidayStart", holidayStart);
@@ -52,18 +52,11 @@ const VacationForm = () => {
     axios
       .post('http://localhost:8484/api/vacation', formData) 
       .then((res) => {
+        console.log("데이터가 전송되었습니다.");
         console.log(res);
-        if (res.data) {
-            //success
-            console.log("데이터 저장 성공");
-        } else {
-            //err
-            console.log("데이터 저장 실패");
-        }
       })
       .catch((err) => {
-          //err
-          alert("에러 발생 : "+ err);
+        console.log("에러 발생 : "+ err);
      });
   }
 
