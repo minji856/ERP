@@ -39,8 +39,8 @@ const VacationForm = () => {
   //   })
   // }
 
-  const submitHandler = e => {
-    e.preventDefault();
+  const submitHandler = (event) => {
+    event.preventDefault();
     const formData = new FormData();
     alert(JSON.stringify(formData, null, 2));
     
