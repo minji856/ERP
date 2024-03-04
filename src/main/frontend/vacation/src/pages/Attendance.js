@@ -14,6 +14,7 @@ const Attendance = () => {
     
     const handleClockIn = () => {
         // 출근 기능을 수행할 코드를 추가합니다.
+        alert("출근되었습니다.")
         console.log('출근했습니다.');
     };
 
@@ -24,29 +25,29 @@ const Attendance = () => {
 
     return (
         <>
-            {/* 여기에 현재 접속한 사원이름 출력과 연차현황 출력 */}
-            <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                <h1 class="h3 mb-0 text-gray-800">출퇴근/근태현황</h1>
-            </div>
-            <div class="col-xl-8 col-lg-5">
-                <div class="card shadow mb-4">
-                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0 font-weight-bold text-primary">출퇴근 시스템</h6>
-                    </div>
-                    <div class="card-body">
-                        <div>
-                            <header>
-                                <div>
-                                    <h1>현재 시간: {currentTime.toLocaleTimeString()}</h1>
-                                    <button onClick={handleClockIn}>출근하기</button><br/>
-                                    <button onClick={handleClockOut}>퇴근하기</button>
-                                </div>
-                            </header>
-                        </div>
+        {/* 여기에 현재 접속한 사원이름 출력과 연차현황 출력 */}
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">출퇴근/근태현황</h1>
+        </div>
+        <div class="col-xl-8 col-lg-5">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">출퇴근 시스템</h6>
+                </div>
+                <div class="card-body">
+                    <div>
+                        <header>
+                            <div>
+                                <h1>현재 시간: {currentTime.toLocaleTimeString()}</h1>
+                                <button onClick={handleClockIn}>출근하기</button><br/>
+                                <button onClick={handleClockOut}>퇴근하기</button>
+                            </div>
+                        </header>
                     </div>
                 </div>
             </div>
-        </>
+        </div>
+    </>
     );
 }
 
