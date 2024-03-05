@@ -61,14 +61,14 @@ const VacationForm = () => {
   }
 
   /**
-   * 신청취소를 누르면 예 누를시 작성한 데이터가 reset
+   * 신청취소를 누르면 예 누를시 작성한 데이터가 초기화됩니다.
    */
   const handleReset = () => {
-    window.confirm('신청을 취소하시겠습니까? 취소하시면 이전으로 돌아갑니다.')
+    window.confirm('신청을 취소하시겠습니까? 예 를 누를시 입력한 내용이 삭제됩니다.')
   }
 
   return (
-    <form className="vacationForm" onSubmit={submitHandler} method="post" action="/api/vacation">
+    <form className="vacationForm" onSubmit={submitHandler} method="post" action="/api/vacRequest">
       <input type="reset" value="신청취소" onClick={handleReset}/>
       <table>
         <tr>
