@@ -27,7 +27,7 @@ const Attendance = () => {
         <>
         {/* 여기에 현재 접속한 사원이름 출력과 연차현황 출력 */}
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">출퇴근/근태현황</h1>
+            <h1 class="h3 mb-0 text-gray-800">출퇴근</h1>
         </div>
         <div class="col-xl-8 col-lg-5">
             <div class="card shadow mb-4">
@@ -40,6 +40,7 @@ const Attendance = () => {
                             <div>
                                 <h1>현재 시간: {currentTime.toLocaleTimeString()}</h1>
                                 <button onClick={handleClockIn}>출근하기</button><br/>
+                                <button>외근</button><br/>
                                 <button onClick={handleClockOut}>퇴근하기</button>
                             </div>
                         </header>
