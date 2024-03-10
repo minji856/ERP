@@ -13,22 +13,22 @@ const VacationForm = () => {
   const [reason, setReason] = useState('');
 
   const handleType = (event) => {
-    event.preventDefault();
+    //event.preventDefault();
     setVacationType(event.target.value);
   };
 
   const handleHolidayStart = (event) => {
-    event.preventDefault();
+    //event.preventDefault();
     setHolidayStart(event.target.value);
   };
 
   const handleHolidayEnd = (event) => {
-    event.preventDefault();
+    //event.preventDefault();
     setHolidayEnd(event.target.value);
   };
 
   const handleReason = (event) => {
-    event.preventDefault();
+    //event.preventDefault();
     setReason(event.target.value);
   };
 
