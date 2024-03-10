@@ -49,6 +49,9 @@ const VacationForm = () => {
     formData.append("holidayEnd", holidayEnd);
     formData.append("reason", reason);
 
+    // formData 객체가 제대로 만들어졌는지 확인
+    console.log(vacationType, holidayStart, holidayEnd, reason);
+
     axios
       .post('http://localhost:8484/api/vacation', formData) 
       .then((res) => {
