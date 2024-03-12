@@ -77,7 +77,7 @@ const VacationForm = () => {
         <tr>
           <td>
               휴가구분
-              <select className="vacationType" onChange={handleType}>
+              <select className="vacationType" required onChange={handleType}>
                 {/* <!-- -선택- 눌렀을 때 정보 안 넘어오는거 예외처리 --> */}
                 <option value=""> —선택— </option>
                 <option value="MonthlyLeave"> 월차 </option>
@@ -101,7 +101,8 @@ const VacationForm = () => {
       </tr>
         <td colSpan='3'>
           (비고)사유 : <textarea name="reason"
-            placeholder="휴가 사유를 입력하세요." 
+            placeholder="휴가 사유를 입력하세요."
+            required 
             onChange={handleReason}></textarea>
         </td>
       </table>
