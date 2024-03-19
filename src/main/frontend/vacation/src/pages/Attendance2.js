@@ -76,10 +76,9 @@ function Attendance({
   handleSelectedIdChange,
   handleChoose,
   pageInfo,
-
   handlePageChange,
   showPagination,
-}) {
+  }) {
   return (
     <Container>
       <div className="numBoxContainer">
