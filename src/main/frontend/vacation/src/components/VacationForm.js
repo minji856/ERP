@@ -79,7 +79,7 @@ const VacationForm = () => {
               휴가구분
               <select className="vacationType" required onChange={handleType}>
                 {/* <!-- -선택- 눌렀을 때 정보 다시 입력 알림 창 띄우기 --> */}
-                <option value=""> —선택— </option>
+                <option value="error"> —선택— </option>
                 <option value="MonthlyLeave"> 월차 </option>
                 <option value="HalfDay"> 반차 </option>
                 <option value="AnnualLeave"> 연차 </option>
