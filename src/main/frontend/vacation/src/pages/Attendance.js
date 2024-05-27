@@ -15,8 +15,8 @@ const Attendance = () => {
         return () => clearInterval(intervalId);
     }, []); // 빈 배열을 전달하여 컴포넌트가 처음 마운트될 때만 실행되도록 합니다.
     
-    const nowTime = moment().format('YYYY-MM-DD HH:mm:ss');
-    console.log(nowTime)
+    const nowTime = moment().format('YYYY-MM-DD HH:mm');
+    //console.log(nowTime)
 
     const handleClockIn = () => {
         // 출근 기능을 수행할 코드를 추가합니다.
