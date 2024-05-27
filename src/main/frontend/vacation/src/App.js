@@ -3,6 +3,7 @@ import Nav from 'components/layout/nav'
 import CalendarPage from 'pages/CalendarPage'
 import 'styles/Font.css'
 import Vacation from 'pages/Vacation';
+import Attendance from 'pages/Attendance';
 
 const App = () => {
   // useEffect(()=>{
@@ -19,7 +20,7 @@ const App = () => {
             {/* <Route path="/" element={<Main/>}></Route> */}
             <Route path="/calendar" element={<CalendarPage/>}></Route>
             <Route path="/vacation" element={<Vacation/>}></Route>
-            {/* <Route path="/vacation" element={<Vacation/>}></Route> 휴가 리스트 페이지*/}
+            <Route path="/attendance" element={<Attendance/>}></Route>
           </Routes>
             {/* <Main /> */}
         {/* <Footer /> */}
