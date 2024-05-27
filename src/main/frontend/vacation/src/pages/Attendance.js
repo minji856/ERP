@@ -27,16 +27,14 @@ const Attendance = () => {
     return (
         <>
         {/* 여기에 현재 접속한 사원이름 출력과 연차현황 출력 */}
-        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <div class="container mt-5">
             <h1 class="h3 mb-0 text-gray-800">출퇴근</h1>
-        </div>
-        <div class="col-xl-8 col-lg-5">
-            <div class="card shadow mb-4">
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">출퇴근 시스템</h6>
-                </div>
+        <div className="card mt-4">
+            <div className="card-header">
+                <h5>출퇴근/근태현황</h5>
+            </div>
                 <div class="card-body">
-                    <div>
+                    <div className="col-md-12">
                         <header>
                             <div>
                                 <h1>현재 시간: {currentTime.toLocaleTimeString()}</h1>
