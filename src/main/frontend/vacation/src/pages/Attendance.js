@@ -1,4 +1,7 @@
 import React , { useState, useEffect }from 'react';
+import moment from 'moment';
+// 자동으로 한국 시간을 불러오지만 import 추가 함
+import 'moment/locale/ko';
 
 const Attendance = () => {
     const [currentTime, setCurrentTime] = useState(new Date());
@@ -12,6 +15,9 @@ const Attendance = () => {
         return () => clearInterval(intervalId);
     }, []); // 빈 배열을 전달하여 컴포넌트가 처음 마운트될 때만 실행되도록 합니다.
     
+    const nowTime = moment().format('YYYY-MM-DD HH:mm:ss');
+    console.log(nowTime)
+
     const handleClockIn = () => {
         // 출근 기능을 수행할 코드를 추가합니다.
         // 이미 출근된 상태면 출근 버튼 비활성화
@@ -38,6 +44,7 @@ const Attendance = () => {
                         <header>
                             <div>
                                 <h1>현재 시간: {currentTime.toLocaleTimeString()}</h1>
+                                <h1>현재 시간(moment 버전): {nowTime}</h1>
                                 <button onClick={handleClockIn}>출근하기</button><br/>
                                 <button>외근</button><br/>
                                 <button onClick={handleClockOut}>퇴근하기</button>
