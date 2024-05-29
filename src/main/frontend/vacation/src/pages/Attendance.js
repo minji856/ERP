@@ -4,25 +4,16 @@ import moment from 'moment';
 import 'moment/locale/ko';
 
 const Attendance = () => {
-    const [currentTime, setCurrentTime] = useState(new Date());
+    const [workClickTime, setworkClickTime] = useState(null);
 
-    // useEffect를 사용하여 현재 시간을 갱신합니다.
-    useEffect(() => {
-        const intervalId = setInterval(() => {
-            setCurrentTime(new Date());
-        }, 1000);
-        // 컴포넌트가 언마운트되면 clearInterval을 호출하여 setInterval을 정리합니다.
-        return () => clearInterval(intervalId);
-    }, []); // 빈 배열을 전달하여 컴포넌트가 처음 마운트될 때만 실행되도록 합니다.
-    
-    const nowTime = moment().format('YY-MM-DD HH:mm');
-    //console.log(nowTime)
+    // moment.js를 이용한 시간 출력
+    const nowTime = moment().format('YY-MM-DD HH:mm:ss');
 
     const handleClockIn = () => {
         // 출근 기능을 수행할 코드를 추가합니다.
         // 이미 출근된 상태면 출근 버튼 비활성화
         alert("출근하겠습니까?");
-        console.log('출근했습니다.');
+        console.log('출근한 시간: ' + nowTime);
     };
 
     const handleClockOut = () => {
