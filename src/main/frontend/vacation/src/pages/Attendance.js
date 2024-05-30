@@ -22,7 +22,7 @@ const Attendance = () => {
         setleaveWorkClickTime(currentTime);
         alert("퇴근하시겠습니까?");
         // 비활성화로 설정해두기
-        console.log('퇴근했습니다.' + leaveWorkClickTime);
+        console.log('퇴근한 시간: ' + leaveWorkClickTime);
     };
 
     return (
