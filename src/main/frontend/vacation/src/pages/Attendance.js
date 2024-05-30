@@ -5,21 +5,22 @@ import 'moment/locale/ko';
 
 const Attendance = () => {
     /* 출근시간 저장용 */
-    const [workClickTime, setworkClickTime] = useState(null);
-    const [leaveWorkClickTime, setleaveWorkClickTime] = useState(null);
+    const nowTime = moment().format('YY-MM-DD HH:mm:ss');
+    const [workClickTime, setworkClickTime] = useState(nowTime);
+    const [leaveWorkClickTime, setleaveWorkClickTime] = useState(nowTime);
     const currentTime = new Date().toLocaleString();
 
     // moment.js를 이용한 시간 출력
-    const nowTime = moment().format('YY-MM-DD HH:mm:ss');
 
     const handleClockIn = () => {
         setworkClickTime(currentTime);
         alert("출근하시겠습니까?");
         console.log('출근한 시간: ' + workClickTime);
     };
-
+    
     const handleClockOut = () => {
         setleaveWorkClickTime(currentTime);
+        alert("퇴근하시겠습니까?");
         // 비활성화로 설정해두기
         console.log('퇴근했습니다.' + leaveWorkClickTime);
     };
