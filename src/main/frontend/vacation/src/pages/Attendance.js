@@ -6,6 +6,7 @@ import 'moment/locale/ko';
 const Attendance = () => {
     /* 출근시간 저장용 */
     const [workClickTime, setworkClickTime] = useState(null);
+    const [leaveWorkClickTime, setleaveWorkClickTime] = useState(null);
     const currentTime = new Date().toLocaleString();
 
     // moment.js를 이용한 시간 출력
@@ -18,9 +19,9 @@ const Attendance = () => {
     };
 
     const handleClockOut = () => {
-        // 퇴근 기능을 수행할 코드를 추가합니다.
+        setleaveWorkClickTime(currentTime);
         // 비활성화로 설정해두기
-        console.log('퇴근했습니다.');
+        console.log('퇴근했습니다.' + leaveWorkClickTime);
     };
 
     return (
