@@ -4,7 +4,7 @@ import moment from 'moment';
 import 'moment/locale/ko';
 
 const Attendance = () => {
-    /* 출근시간 저장용 */
+    // moment.js를 이용한 시간 출력
     const nowTime = moment().format('YY-MM-DD HH:mm:ss');
     const [workClickTime, setworkClickTime] = useState(nowTime);
     const [leaveWorkClickTime, setleaveWorkClickTime] = useState(nowTime);
@@ -12,16 +12,18 @@ const Attendance = () => {
     const [isleaveWorkdisabled, setisleaveWorkdisabled] = useState(true);
     const currentTime = new Date().toLocaleString();
 
-    // moment.js를 이용한 시간 출력
 
+    /* 출근시간을 저장하는 메서드입니다. */
     const handleClockIn = () => {
         setworkClickTime(currentTime);
-        window.confirm("출근하시겠습니까?");
-        setisleaveWorkdisabled(false); // 퇴근 버튼이 활성화됨
+        if(window.confirm("출근하시겠습니까?")){
+            setisleaveWorkdisabled(false); // 퇴근 버튼이 활성화됨
+        }
         console.log('출근한 시간: ' + workClickTime);
         setisWorkdisabled(true); // 출근 버튼이 비활성화됨
     };
     
+    /* 퇴근시간을 저장하는 메서드입니다. */
     const handleClockOut = () => {
         setleaveWorkClickTime(currentTime);
         alert("퇴근하시겠습니까?");
