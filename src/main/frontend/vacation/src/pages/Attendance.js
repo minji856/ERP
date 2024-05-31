@@ -8,7 +8,7 @@ const Attendance = () => {
     const nowTime = moment().format('YY-MM-DD HH:mm:ss');
     const [workClickTime, setworkClickTime] = useState(nowTime);
     const [leaveWorkClickTime, setleaveWorkClickTime] = useState(nowTime);
-    const [isleaveWorkdisabled, setisleaveWorkdisabled] = useState(false);
+    const [isleaveWorkdisabled, setisleaveWorkdisabled] = useState(true);
     const currentTime = new Date().toLocaleString();
 
     // moment.js를 이용한 시간 출력
@@ -20,6 +20,7 @@ const Attendance = () => {
     };
     
     const handleClockOut = () => {
+        setisleaveWorkdisabled(false); // 퇴근 버튼 비활성화
         setleaveWorkClickTime(currentTime);
         alert("퇴근하시겠습니까?");
         // 비활성화로 설정해두기
