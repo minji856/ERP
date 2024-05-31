@@ -16,15 +16,15 @@ const Attendance = () => {
 
     const handleClockIn = () => {
         setworkClickTime(currentTime);
-        alert("출근하시겠습니까?");
+        window.confirm("출근하시겠습니까?");
         setisleaveWorkdisabled(false); // 퇴근 버튼이 활성화됨
         console.log('출근한 시간: ' + workClickTime);
+        setisWorkdisabled(true); // 출근 버튼이 비활성화됨
     };
     
     const handleClockOut = () => {
         setleaveWorkClickTime(currentTime);
         alert("퇴근하시겠습니까?");
-        setisWorkdisabled(false); // 퇴근 버튼이 활성화됨
         // 비활성화로 설정해두기
         console.log('퇴근한 시간: ' + leaveWorkClickTime);
     };
