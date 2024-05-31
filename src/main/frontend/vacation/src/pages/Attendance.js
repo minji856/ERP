@@ -1,4 +1,4 @@
-import React , { useState }from 'react';
+import React , { useState, useEffect }from 'react';
 import moment from 'moment';
 // 자동으로 한국 시간을 불러오지만 import 추가 함
 import 'moment/locale/ko';
@@ -12,6 +12,17 @@ const Attendance = () => {
     const [isleaveWorkdisabled, setisleaveWorkdisabled] = useState(true);
     const currentTime = new Date().toLocaleString();
 
+    useEffect(() => {
+        if (workClickTime) {
+            console.log('출근한 시간: ' + workClickTime);
+        }
+    }, [workClickTime]);
+
+    useEffect(() => {
+        if (leaveWorkClickTime) {
+            console.log('퇴근한 시간: ' + leaveWorkClickTime);
+        }
+    }, [leaveWorkClickTime]);
 
     /* 출근시간을 저장하는 메서드입니다. */
     const handleClockIn = () => {
@@ -20,7 +31,7 @@ const Attendance = () => {
             setisleaveWorkdisabled(false); // 퇴근 버튼이 활성화됨
             setisWorkdisabled(true); // 출근 버튼이 비활성화됨
         }
-        console.log('출근한 시간: ' + workClickTime);
+        //console.log('출근한 시간: ' + workClickTime);
     };
     
     /* 퇴근시간을 저장하는 메서드입니다. */
@@ -30,7 +41,7 @@ const Attendance = () => {
             setisleaveWorkdisabled(true); // 퇴근 버튼이 비활성화됨
             setisWorkdisabled(false); // 출근 버튼이 다시 활성화됨
         }
-        console.log('퇴근한 시간: ' + leaveWorkClickTime);
+        //console.log('퇴근한 시간: ' + leaveWorkClickTime);
     };
 
     return (
@@ -47,7 +58,6 @@ const Attendance = () => {
                         <header>
                             <div>
                                 <h1>현재 시간: {new Date().toLocaleString()}</h1>
-                                <h1>현재 시간(moment 버전): {nowTime}</h1>
                                 <button onClick={handleClockIn} disabled={isWorkdisabled}>출근하기</button><br/>
                                 <button>외근</button><br/>
                                 <button onClick={handleClockOut} disabled={isleaveWorkdisabled}>퇴근하기</button>
