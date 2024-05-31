@@ -8,6 +8,7 @@ const Attendance = () => {
     const nowTime = moment().format('YY-MM-DD HH:mm:ss');
     const [workClickTime, setworkClickTime] = useState(nowTime);
     const [leaveWorkClickTime, setleaveWorkClickTime] = useState(nowTime);
+    const [isWorkdisabled, setisWorkdisabled] = useState(false);
     const [isleaveWorkdisabled, setisleaveWorkdisabled] = useState(true);
     const currentTime = new Date().toLocaleString();
 
@@ -16,13 +17,14 @@ const Attendance = () => {
     const handleClockIn = () => {
         setworkClickTime(currentTime);
         alert("출근하시겠습니까?");
+        setisleaveWorkdisabled(false); // 퇴근 버튼이 활성화됨
         console.log('출근한 시간: ' + workClickTime);
     };
     
     const handleClockOut = () => {
-        setisleaveWorkdisabled(false); // 퇴근 버튼 비활성화
         setleaveWorkClickTime(currentTime);
         alert("퇴근하시겠습니까?");
+        setisWorkdisabled(false); // 퇴근 버튼이 활성화됨
         // 비활성화로 설정해두기
         console.log('퇴근한 시간: ' + leaveWorkClickTime);
     };
@@ -42,7 +44,7 @@ const Attendance = () => {
                             <div>
                                 <h1>현재 시간: {new Date().toLocaleString()}</h1>
                                 <h1>현재 시간(moment 버전): {nowTime}</h1>
-                                <button onClick={handleClockIn}>출근하기</button><br/>
+                                <button onClick={handleClockIn} disabled={isWorkdisabled}>출근하기</button><br/>
                                 <button>외근</button><br/>
                                 <button onClick={handleClockOut} disabled={isleaveWorkdisabled}>퇴근하기</button>
                             </div>
