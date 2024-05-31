@@ -8,6 +8,7 @@ const Attendance = () => {
     const nowTime = moment().format('YY-MM-DD HH:mm:ss');
     const [workClickTime, setworkClickTime] = useState(nowTime);
     const [leaveWorkClickTime, setleaveWorkClickTime] = useState(nowTime);
+    const [isleaveWorkdisabled, setisleaveWorkdisabled] = useState(false);
     const currentTime = new Date().toLocaleString();
 
     // moment.js를 이용한 시간 출력
@@ -42,7 +43,7 @@ const Attendance = () => {
                                 <h1>현재 시간(moment 버전): {nowTime}</h1>
                                 <button onClick={handleClockIn}>출근하기</button><br/>
                                 <button>외근</button><br/>
-                                <button onClick={handleClockOut}>퇴근하기</button>
+                                <button onClick={handleClockOut} disabled={isleaveWorkdisabled}>퇴근하기</button>
                             </div>
                         </header>
                     </div>
