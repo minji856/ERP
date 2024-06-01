@@ -31,7 +31,6 @@ const Attendance = () => {
             setisleaveWorkdisabled(false); // 퇴근 버튼이 활성화됨
             setisWorkdisabled(true); // 출근 버튼이 비활성화됨
         }
-        //console.log('출근한 시간: ' + workClickTime);
     };
     
     /* 퇴근시간을 저장하는 메서드입니다. */
@@ -41,7 +40,6 @@ const Attendance = () => {
             setisleaveWorkdisabled(true); // 퇴근 버튼이 비활성화됨
             setisWorkdisabled(false); // 출근 버튼이 다시 활성화됨
         }
-        //console.log('퇴근한 시간: ' + leaveWorkClickTime);
     };
 
     return (
