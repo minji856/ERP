@@ -15,6 +15,21 @@ const Attendance = () => {
     useEffect(() => {
         if (workClickTime) {
             console.log('출근한 시간: ' + workClickTime);
+            // 출근한 시간을 서버로 전송
+            fetch('/api/work-in', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ workClickTime })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('출근 시간 저장 성공:', data);
+            })
+            .catch((error) => {
+                console.error('출근 시간 저장 실패:', error);
+            });
         }
     }, [workClickTime]);
 
