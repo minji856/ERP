@@ -6,8 +6,8 @@ import 'moment/locale/ko';
 const Attendance = () => {
     // moment.js를 이용한 시간 출력
     const nowTime = moment().format('YY-MM-DD HH:mm:ss');
-    const [workClickTime, setworkClickTime] = useState(nowTime);
-    const [leaveWorkClickTime, setleaveWorkClickTime] = useState(nowTime);
+    const [workClickTime, setworkClickTime] = useState(null);
+    const [leaveWorkClickTime, setleaveWorkClickTime] = useState(null);
     const [isWorkdisabled, setisWorkdisabled] = useState(false);
     const [isleaveWorkdisabled, setisleaveWorkdisabled] = useState(true);
     const currentTime = new Date().toLocaleString();
