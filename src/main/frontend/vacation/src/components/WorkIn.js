@@ -1,7 +1,8 @@
 import React from "react";
 
-const WorkIn = () => {
-    if(window.confirm("출근하시겠습니까?")){
+export const handleClockIn = (currentTime, setworkClickTime, setisWorkdisabled, setisleaveWorkdisabled) => {
+    setworkClickTime(currentTime);
+    if (window.confirm("출근하시겠습니까?")) {
         fetch('/api/work-in', {
             method: 'POST',
             headers: {
@@ -19,6 +20,12 @@ const WorkIn = () => {
         setisleaveWorkdisabled(false); // 퇴근 버튼이 활성화됨
         setisWorkdisabled(true); // 출근 버튼이 비활성화됨
     }
-}
+};
 
-export default WorkIn;
+export const handleClockOut = (currentTime, setleaveWorkClickTime, setisWorkdisabled, setisleaveWorkdisabled) => {
+    setleaveWorkClickTime(currentTime);
+    if (window.confirm("퇴근하시겠습니까?")) {
+        setisleaveWorkdisabled(true); // 퇴근 버튼이 비활성화됨
+        setisWorkdisabled(false); // 출근 버튼이 다시 활성화됨
+    }
+};
