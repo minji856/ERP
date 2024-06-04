@@ -45,7 +45,7 @@ const nav = () => {
 	                </ul>
 	            </li>
 	            <li className="Nav-li">
-	                <a href="/mypage">마이페이지(헤더 만들고 버림)</a>
+	                <a href="/mypage">마이페이지</a>
 	            </li>
 	        </ul>
 	    </nav>

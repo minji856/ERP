@@ -24,9 +24,17 @@ const Attendance = () => {
                         <header>
                             <div>
                                 <h1>현재 시간: {new Date().toLocaleString()}</h1>
-                                <button onClick={() => handleClockIn(currentTime, setworkClickTime, setisWorkdisabled, setisleaveWorkdisabled)} disabled={isWorkdisabled}>출근하기</button><br/>
-                                <button>외근</button><br/>
-                                <button onClick={() => handleClockOut(currentTime, setleaveWorkClickTime, setisWorkdisabled, setisleaveWorkdisabled)} disabled={isleaveWorkdisabled}>퇴근하기</button>
+                                <button onClick={() => 
+                                    handleClockIn(currentTime, setworkClickTime, setisWorkdisabled, setisleaveWorkdisabled)} 
+                                    disabled={isWorkdisabled}>출근하기
+                                </button>
+                                <br/>
+                                <button>외근</button>
+                                <br/>
+                                <button onClick={() => 
+                                    handleClockOut(currentTime, setleaveWorkClickTime, setisWorkdisabled, setisleaveWorkdisabled)} 
+                                    disabled={isleaveWorkdisabled}>퇴근하기
+                                </button>
                             </div>
                         </header>
                     </div>
