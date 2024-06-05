@@ -1,4 +1,4 @@
-export const handleClockIn = (currentTime, setworkClickTime, setisWorkdisabled, setisleaveWorkdisabled) => {
+export const handleClockIn = (currentTime, workClickTime, setworkClickTime, setisWorkdisabled, setisleaveWorkdisabled) => {
     setworkClickTime(currentTime);
     if (window.confirm("출근하시겠습니까?")) {
         fetch('/api/work-in', {
@@ -20,7 +20,7 @@ export const handleClockIn = (currentTime, setworkClickTime, setisWorkdisabled, 
     }
 };
 
-export const handleClockOut = (currentTime, setleaveWorkClickTime, setisWorkdisabled, setisleaveWorkdisabled) => {
+export const handleClockOut = (currentTime, leaveWorkClickTime, setleaveWorkClickTime, setisWorkdisabled, setisleaveWorkdisabled) => {
     setleaveWorkClickTime(currentTime);
     if (window.confirm("퇴근하시겠습니까?")) {
         setisleaveWorkdisabled(true); // 퇴근 버튼이 비활성화됨
