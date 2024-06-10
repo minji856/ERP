@@ -17,7 +17,7 @@ const Attendance = () => {
             <h1 className="h3 mb-0 text-gray-800">출퇴근</h1>
             <div className="card mt-4">
                 <div className="card-header">
-                    <h5>출퇴근/근태현황</h5>
+                    <h5>근태관리</h5>
                 </div>
                 <div className="card-body">
                     <div className="col-md-12">
@@ -28,9 +28,7 @@ const Attendance = () => {
                                     handleWorkIn(currentTime, workClickTime, setworkClickTime, setisWorkdisabled, setisleaveWorkdisabled)} 
                                     disabled={isWorkdisabled}>출근하기
                                 </button>
-                                <br/>
                                 <button>외근</button>
-                                <br/>
                                 <button onClick={() => 
                                     handleWorkOut(currentTime, leaveWorkClickTime, setleaveWorkClickTime, setisWorkdisabled, setisleaveWorkdisabled)} 
                                     disabled={isleaveWorkdisabled}>퇴근하기
