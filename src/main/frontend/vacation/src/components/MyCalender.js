@@ -102,7 +102,7 @@ const MyCalendar = ()=> {
         events={ async (info, successCallback, failureCallback)=>{
           const eventResult = await axios({
             method: "POST",
-            url: "/eventData"
+            url: "api/eventData"
           })
           const eventData = eventResult.data;
 
