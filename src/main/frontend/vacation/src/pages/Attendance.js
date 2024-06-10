@@ -24,10 +24,15 @@ const Attendance = () => {
                     <div className="col-md-12">
                         <header>
                             <div>
-                                <h1>현재 시간 : <NowClock/><OnlyNumClock/></h1>
+                                <h1>현재 시간 : <NowClock/></h1>
+                            </div>
+                            <h3>출근 시간퇴근 시간</h3>
+                            {/* 공백 출력 <p>금붕어<Span />|<Span />과장</p> */}
+                            <OnlyNumClock/>
+                            <div>
                                 <button onClick={() => 
                                     WorkIn(currentTime, workClickTime, setworkClickTime, setisWorkdisabled, setisleaveWorkdisabled)} 
-                                    disabled={isWorkdisabled}>출근하기<NowClock></NowClock>
+                                    disabled={isWorkdisabled}>출근하기<br></br><OnlyNumClock/>
                                 </button>
                                 <button>외근</button>
                                 <button onClick={() => 
