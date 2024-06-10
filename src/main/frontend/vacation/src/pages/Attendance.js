@@ -1,7 +1,8 @@
 import React , { useState }from 'react';
 // import moment from 'moment';
 import 'moment/locale/ko';
-import { handleWorkIn, handleWorkOut} from 'components/WorkIn';
+import WorkIn from 'components/WorkIn';
+import WorkOut from 'components/WorkOut';
 
 const Attendance = () => {
     const [workClickTime, setworkClickTime] = useState(null);
@@ -25,12 +26,12 @@ const Attendance = () => {
                             <div>
                                 <h1>현재 시간: {new Date().toLocaleString()}</h1>
                                 <button onClick={() => 
-                                    handleWorkIn(currentTime, workClickTime, setworkClickTime, setisWorkdisabled, setisleaveWorkdisabled)} 
+                                    WorkIn(currentTime, workClickTime, setworkClickTime, setisWorkdisabled, setisleaveWorkdisabled)} 
                                     disabled={isWorkdisabled}>출근하기
                                 </button>
                                 <button>외근</button>
                                 <button onClick={() => 
-                                    handleWorkOut(currentTime, leaveWorkClickTime, setleaveWorkClickTime, setisWorkdisabled, setisleaveWorkdisabled)} 
+                                    WorkOut(currentTime, leaveWorkClickTime, setleaveWorkClickTime, setisWorkdisabled, setisleaveWorkdisabled)} 
                                     disabled={isleaveWorkdisabled}>퇴근하기
                                 </button>
                             </div>
