@@ -2,6 +2,7 @@ import React , { useState }from 'react';
 import WorkIn from 'components/WorkIn';
 import WorkOut from 'components/WorkOut';
 import NowClock from 'components/NowClock';
+import OnlyNumClock from 'components/OnlyNumClock';
 
 const Attendance = () => {
     const [workClickTime, setworkClickTime] = useState(null);
@@ -23,10 +24,10 @@ const Attendance = () => {
                     <div className="col-md-12">
                         <header>
                             <div>
-                                <NowClock></NowClock>
+                                <h1>현재 시간 : <NowClock/><OnlyNumClock/></h1>
                                 <button onClick={() => 
                                     WorkIn(currentTime, workClickTime, setworkClickTime, setisWorkdisabled, setisleaveWorkdisabled)} 
-                                    disabled={isWorkdisabled}>출근하기
+                                    disabled={isWorkdisabled}>출근하기<NowClock></NowClock>
                                 </button>
                                 <button>외근</button>
                                 <button onClick={() => 

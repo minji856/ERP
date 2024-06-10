@@ -5,15 +5,15 @@ const NowClock = () => {
 
     useEffect(() => {
         const timer = setInterval(() => {
-        setCurrentTime(new Date());
+            setCurrentTime(new Date());
         }, 1000); // 실시간 시간 업데이트 (1초)
-        return () => clearInterval(timer);
+            return () => clearInterval(timer);
         }, []);
 
     return (
-        <div>
-        <h1>현재 시간: {currentTime.toLocaleTimeString()}</h1>
-        </div>
+        <span>
+            {currentTime.toLocaleTimeString()}
+        </span>
     );
 };
 
