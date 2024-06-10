@@ -1,8 +1,7 @@
 import React , { useState }from 'react';
-// import moment from 'moment';
-import 'moment/locale/ko';
 import WorkIn from 'components/WorkIn';
 import WorkOut from 'components/WorkOut';
+import NowClock from 'components/NowClock';
 
 const Attendance = () => {
     const [workClickTime, setworkClickTime] = useState(null);
@@ -24,7 +23,7 @@ const Attendance = () => {
                     <div className="col-md-12">
                         <header>
                             <div>
-                                <h1>현재 시간: {new Date().toLocaleString()}</h1>
+                                <NowClock></NowClock>
                                 <button onClick={() => 
                                     WorkIn(currentTime, workClickTime, setworkClickTime, setisWorkdisabled, setisleaveWorkdisabled)} 
                                     disabled={isWorkdisabled}>출근하기
