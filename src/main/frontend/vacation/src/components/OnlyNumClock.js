@@ -18,7 +18,9 @@ const OnlyNumClock = () => {
     };
   
     return (
-      <>{formatTime(currentTime)}</>
+      <>
+        {formatTime(currentTime)}
+      </>
     );
   };
 

@@ -26,9 +26,15 @@ const Attendance = () => {
                             <div>
                                 <h1>현재 시간 : <NowClock/></h1>
                             </div>
-                            <h3>출근 시간퇴근 시간</h3>
+                            <br></br>
+                            <br></br>
+                            <br></br>
+                            <h3>출근 시간 퇴근 시간</h3>
+                            <br></br>
+                            <br></br>
+                            <br></br>
                             {/* 공백 출력 <p>금붕어<Span />|<Span />과장</p> */}
-                            <OnlyNumClock/>
+                            <h1><OnlyNumClock/></h1>
                             <div>
                                 <button onClick={() => 
                                     WorkIn(currentTime, workClickTime, setworkClickTime, setisWorkdisabled, setisleaveWorkdisabled)} 
