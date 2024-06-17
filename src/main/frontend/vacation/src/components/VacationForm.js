@@ -7,6 +7,15 @@ import axios from 'axios';
  * @param setFormData 저장된 입력값을 담은 변수
  */
 const VacationForm = () => {
+  const [vacationType, setVacationType] = useState('');
+  const [holidayStart, setHolidayStart] = useState('');
+  const [holidayEnd, setHolidayEnd] = useState('');
+  const [reason, setReason] = useState('');
+
+  const handleType = (event) => {
+    event.preventDefault();
+    setVacationType(event.target.value);}
+
   const initialFormState = {
     vacationType: '',
     holidayStart: '',
@@ -38,15 +47,18 @@ const VacationForm = () => {
     data.append("holidayEnd", formData.holidayEnd);
     data.append("reason", formData.reason);
 
+    // formData 객체가 제대로 만들어졌는지 확인
+    
     axios
-      .post('http://localhost:8484/api/vacation', data)
-      .then((res) => {
-        console.log("데이터가 전송되었습니다.");
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log("에러 발생 : " + err);
-      });
+    .post('http://localhost:8484/api/vacation', data)
+    .then((res) => {
+      console.log("데이터가 전송되었습니다.");
+      console.log(res);
+    })
+    .catch((err) => {
+      console.log("에러 발생 : " + err);
+    });
+    console.log(vacationType, holidayStart, holidayEnd, reason);
   };
 
   /**
