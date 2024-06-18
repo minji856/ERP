@@ -36,7 +36,7 @@ const VacationForm = () => {
   const submitHandler = (event) => {
     event.preventDefault();
 
-    if (formData.vacationType === 'error') {
+    if (formData.vacationType === 'NotSelect') {
       alert('휴가 구분을 선택해주세요.');
       return;
     }
@@ -84,7 +84,7 @@ const VacationForm = () => {
                 required
                 onChange={handleChange}
               >
-                <option value="error"> —선택— </option>
+                <option value="NotSelect"> —선택— </option>
                 <option value="MonthlyLeave"> 월차 </option>
                 <option value="HalfDay"> 반차 </option>
                 <option value="AnnualLeave"> 연차 </option>
