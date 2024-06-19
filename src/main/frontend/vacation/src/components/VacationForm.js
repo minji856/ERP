@@ -16,6 +16,11 @@ const VacationForm = () => {
     event.preventDefault();
     setVacationType(event.target.value);}
 
+  const handleVacationStart = (event) => {
+    event.preventDefault();
+    setVacationType(event.target.value);
+  }
+
   const initialFormState = {
     vacationType: '',
     holidayStart: '',
@@ -119,7 +124,6 @@ const VacationForm = () => {
               <textarea
                 name="reason"
                 placeholder="휴가 사유를 입력하세요."
-                value={formData.reason}
                 required
                 onChange={handleChange}
               ></textarea>
