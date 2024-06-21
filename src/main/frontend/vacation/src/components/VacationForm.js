@@ -15,11 +15,16 @@ const VacationForm = () => {
   const handleType = (event) => {
     event.preventDefault();
     setVacationType(event.target.value);}
-
-  const handleVacationStart = (event) => {
+  
+  const handleHolidayStart = (event) => {
     event.preventDefault();
-    setVacationType(event.target.value);
-  }
+    setHolidayStart(event.target.value);
+  };
+
+  const handleHolidayEnd = (event) => {
+    event.preventDefault();
+    setHolidayEnd(event.target.value);
+  };
 
   const initialFormState = {
     vacationType: '',
@@ -46,16 +51,17 @@ const VacationForm = () => {
       return;
     }
 
-    const data = new FormData();
-    data.append("vacationType", formData.vacationType);
-    data.append("holidayStart", formData.holidayStart);
-    data.append("holidayEnd", formData.holidayEnd);
-    data.append("reason", formData.reason);
+    const formData = new FormData();
+    formData.append("vacationType", vacationType);
+    formData.append("holidayStart", holidayStart);
+    formData.append("holidayEnd", holidayEnd);
+    formData.append("reason", reason);
 
     // formData 객체가 제대로 만들어졌는지 확인
-    
+    console.log(vacationType, holidayStart, holidayEnd, reason);
+
     axios
-    .post('http://localhost:8484/api/vacation', data)
+    .post('http://localhost:8484/api/vacation', formData)
     .then((res) => {
       console.log("데이터가 전송되었습니다.");
       console.log(res);
