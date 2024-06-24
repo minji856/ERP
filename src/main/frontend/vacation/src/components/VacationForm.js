@@ -76,7 +76,7 @@ const VacationForm = () => {
    * 신청취소를 누르면 예 누를시 작성한 데이터가 초기화됩니다.
    */
   const handleReset = () => {
-    if (window.confirm('신청을 취소하시겠습니까? 예 를 누를시 입력한 내용이 삭제됩니다.')) {
+    if (window.confirm('신청을 취소하시겠습니까? 예 를 누를시 입력하신 내용이 삭제됩니다.')) {
       setFormData(initialFormState);
     }
   };
