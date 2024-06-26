@@ -3,8 +3,6 @@ import axios from 'axios';
 
 /**
  * 휴가 신청 양식 컴퍼넌트입니다.
- * @param vacationDate
- * @param setFormData 저장된 입력값을 담은 변수
  */
 const VacationForm = () => {
   const [vacationType, setVacationType] = useState('');
@@ -60,16 +58,16 @@ const VacationForm = () => {
     // formData 객체가 제대로 만들어졌는지 확인
     console.log(vacationType, holidayStart, holidayEnd, reason);
 
-    axios
-    .post('http://localhost:8484/api/vacation', formData)
-    .then((res) => {
-      console.log("데이터가 전송되었습니다.");
-      console.log(res);
-    })
-    .catch((err) => {
-      console.log("에러 발생 : " + err);
-    });
-    console.log(vacationType, holidayStart, holidayEnd, reason);
+    // axios
+    // .post('http://localhost:8484/api/vacation', formData)
+    // .then((res) => {
+    //   console.log("데이터가 전송되었습니다.");
+    //   console.log(res);
+    // })
+    // .catch((err) => {
+    //   console.log("에러 발생 : " + err);
+    // });
+    // console.log(vacationType, holidayStart, holidayEnd, reason);
   };
 
   /**
@@ -89,8 +87,7 @@ const VacationForm = () => {
           <tr>
             <td>
               휴가구분
-              <select
-                name="vacationType"
+              <select name="vacationType"
                 value={formData.vacationType}
                 required
                 onChange={handleChange}
