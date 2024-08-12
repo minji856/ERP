@@ -33,14 +33,6 @@ const VacationForm = () => {
 
   const [formData, setFormData] = useState(initialFormState);
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setFormData({
-      ...formData,
-      [name]: value
-    });
-  };
-
   const submitHandler = (event) => {
     event.preventDefault();
 
@@ -57,17 +49,6 @@ const VacationForm = () => {
 
     // formData 객체가 제대로 만들어졌는지 확인
     console.log(vacationType, holidayStart, holidayEnd, reason);
-
-    // axios
-    // .post('http://localhost:8484/api/vacation', formData)
-    // .then((res) => {
-    //   console.log("데이터가 전송되었습니다.");
-    //   console.log(res);
-    // })
-    // .catch((err) => {
-    //   console.log("에러 발생 : " + err);
-    // });
-    // console.log(vacationType, holidayStart, holidayEnd, reason);
   };
 
   /**
@@ -81,7 +62,7 @@ const VacationForm = () => {
 
   return (
     <form className="vacationForm" onSubmit={submitHandler} method="post" action="/api/vacRequest">
-      <button type="button" onClick={handleReset}>신청취소</button>
+      
       <table>
         <tbody>
           <tr>
@@ -90,7 +71,6 @@ const VacationForm = () => {
               <select name="vacationType"
                 value={formData.vacationType}
                 required
-                onChange={handleChange}
               >
                 <option value="NotSelect"> —선택— </option>
                 <option value="MonthlyLeave"> 월차 </option>
@@ -110,14 +90,12 @@ const VacationForm = () => {
                 name="holidayStart"
                 value={formData.holidayStart}
                 required
-                onChange={handleChange}
               /> ~
               <input
                 type="date"
                 name="holidayEnd"
                 value={formData.holidayEnd}
                 required
-                onChange={handleChange}
               />
             </td>
           </tr>
@@ -128,13 +106,12 @@ const VacationForm = () => {
                 name="reason"
                 placeholder="휴가 사유를 입력하세요."
                 required
-                onChange={handleChange}
               ></textarea>
             </td>
           </tr>
         </tbody>
       </table>
-      <input type="submit" value="신청완료" />
+      <input type="submit" value="신청완료" /><button type="button" onClick={handleReset}>신청취소</button>
     </form>
   );
 };
