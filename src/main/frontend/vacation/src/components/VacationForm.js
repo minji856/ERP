@@ -69,7 +69,6 @@ const VacationForm = () => {
             <td>
               휴가구분
               <select name="vacationType"
-                value={formData.vacationType}
                 required
               >
                 <option value="NotSelect"> —선택— </option>
@@ -88,13 +87,11 @@ const VacationForm = () => {
               <input
                 type="date"
                 name="holidayStart"
-                value={formData.holidayStart}
                 required
               /> ~
               <input
                 type="date"
                 name="holidayEnd"
-                value={formData.holidayEnd}
                 required
               />
             </td>
